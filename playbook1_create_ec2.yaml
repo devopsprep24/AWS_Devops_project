@@ -1,0 +1,15 @@
+- name: ec2 launch
+  hosts: webserver
+  become: true
+  tasks:
+  - name: launching AWS instance using Ansible
+    ec2:
+      key_name: aws_instance_Ansible
+      instance_type: t2.micro
+      image: ami-074251216af698218
+      region: us-west-2
+      wait: yes
+      group: sg-051c8ef4c065b5491
+      count: 1
+      vpc_subnet_id: subnet-0bcf2f9b530ad83d2
+      assign_public_ip: yes
